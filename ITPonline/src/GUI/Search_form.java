@@ -34,7 +34,7 @@ public class Search_form extends javax.swing.JFrame {
         DBAccess dba3 = new DBAccess(manName);
         int man_id = dba3.getManufactureName(manName);
         
-        DBAccess dba4 = new DBAccess(man_id);
+        DBAccess dba4 = new DBAccess(man_id, Table1);
     
     
     }
@@ -53,7 +53,7 @@ public class Search_form extends javax.swing.JFrame {
         manuCombo = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Table1 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,8 +71,8 @@ public class Search_form extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setBackground(new java.awt.Color(153, 153, 153));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Table1.setBackground(new java.awt.Color(153, 153, 153));
+        Table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -83,7 +83,7 @@ public class Search_form extends javax.swing.JFrame {
                 "Serial_No", "Man_Id", "Appliance_Type", "Date_Added", "Waranty", "Price", "Qty"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(Table1);
 
         jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -193,12 +193,12 @@ public class Search_form extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Table1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JComboBox<String> manuCombo;
     // End of variables declaration//GEN-END:variables
 }

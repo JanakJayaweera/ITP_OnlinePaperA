@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
 
     
     
@@ -24,6 +25,7 @@ public class DBAccess {
     private String Appliance_Type,Date_Added,Waranty,Price,manName;
     
     private javax.swing.JComboBox manuComboBox;
+    private javax.swing.JTable Table1;
     
     public DBAccess(){
     //Default constructor
@@ -141,10 +143,11 @@ public class DBAccess {
         return Man_Id;
     
     }
-    public DBAccess(int pMan_Id){
+    public DBAccess(int pMan_Id, javax.swing.JTable pTable1){
     //Constructor for getAllAppliances(int id)
         con = DBconnect.connect();
         Man_Id = pMan_Id;
+        Table1 = pTable1;
         
         getAllAppliances(Man_Id);
     }
@@ -154,6 +157,8 @@ public class DBAccess {
             String sql5 = "SELECT * FROM appliances WHERE Man_Id = '"+id+"' ";
             pst = con.prepareStatement(sql5);
             rs = pst.executeQuery();
+            Table1.setModel(DbUtils.resultSetToTableModel(rs));
+            
         }
         catch(Exception e){
             System.out.println(e);
